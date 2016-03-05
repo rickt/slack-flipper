@@ -1,11 +1,13 @@
 package flippy
 
+// struct for runtime environment variables
 type envVars struct {
-	Debug       bool
+	Debug       string
 	SlackTokens string
 	TriggerWord string
 }
 
+// struct for forming a slack request
 type slackRequest struct {
 	Token       string `schema:"token"`
 	TeamID      string `schema:"team_id"`
@@ -20,6 +22,7 @@ type slackRequest struct {
 	TriggerWord string `schema:"trigger_word"`
 }
 
+// structs for slack inbound webhook message
 type Payload struct {
 	Channel      string       `json:"channel"`
 	Username     string       `json:"username"`
@@ -47,3 +50,5 @@ type Field struct {
 	Value string `json:"value"`
 	Short bool   `json:"short"`
 }
+
+// EOF
