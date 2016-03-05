@@ -8,7 +8,7 @@ version: 1-19
 
 # environment variables
 env_variables:
-          SLACK_TOKEN: 'AnpUGBEVuuhUkY5LeBfPELIQ'
+          SLACK_TOKEN: 'REDACTED'
           SLACK_TRIGGERWORD: 'flip'
 
 # runtime is mandatory
