@@ -1,0 +1,23 @@
+# This is a comment
+
+# application is mandatory
+application: slack-flipper
+
+# version is mandatory
+version: 1-19
+
+# environment variables
+env_variables:
+          SLACK_TOKEN: 'AnpUGBEVuuhUkY5LeBfPELIQ'
+          SLACK_TRIGGERWORD: 'flip'
+
+# runtime is mandatory
+runtime: go
+
+# api_version is mandatory
+api_version: go1
+
+# handlers is mandatory
+handlers:
+- url: /.*
+  script: _go_app
