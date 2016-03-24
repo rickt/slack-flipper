@@ -50,13 +50,16 @@ func slackhandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Errorf(ctx, "validateSlackRequest error! err=%v", err)
 	}
+	log.Debugf(ctx, "hook.Text=%v", hook.Text)
 	// remove the triggerword, if its there
 	triggerText := strings.Replace(strings.Trim(hook.Text, " "), env.TriggerWord, "", 1)
 	if triggerText != "" {
 		reversed = flipText(triggerText)
 	}
+	log.Debugf(ctx, "triggerText=%v", triggerText)
 	// do it!
 	newtable = reverseString(table + " " + reversed)
+	log.Debugf(ctx, "newtable=%v", newtable)
 	// build the response
 	payload := Payload{
 		ResponseType: "in_channel",
@@ -81,6 +84,7 @@ func decodeslackrequest(r *http.Request, hook *slackRequest) error {
 		log.Errorf(ctx, "decode error! err=%s", err)
 		return err
 	}
+	log.Debugf(ctx, "hook=%v", hook)
 	// check it
 	if !strings.Contains(env.SlackTokens, hook.Token) || hook.TriggerWord != env.TriggerWord {
 		log.Errorf(ctx, "invalid token or trigger! env.Slacktokens=%s, hook.Token=%s, hook.TriggerWord=%s, env.TriggerWord=%s", env.SlackTokens, hook.Token, hook.TriggerWord, env.TriggerWord)
